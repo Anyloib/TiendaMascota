@@ -24,6 +24,23 @@
         <label>Fecha de nacimiento</label>
         <input required type="date" name="nacimiento" >
         <br/>
+
+        <div class="form-group">
+            <label class="control-label">Pais</label>
+            <select class="form-control" name="pais" required>
+                <option selected disabled value="">Elige un País</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Estado</label>
+            <select class="form-control" name="estado" required>
+                <option selected disabled value="">Elige un</option>
+            </select>
+        </div>
+
+        <div class="form-group">
         <button type="submit">Crear nueva mascota</button>
+        </div>
     </form>
 @endsection

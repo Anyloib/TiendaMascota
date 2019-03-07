@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 21, 2019 at 07:45 PM
+-- Generation Time: Mar 07, 2019 at 12:54 AM
 -- Server version: 5.7.23
--- PHP Version: 7.2.8
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -34,6 +34,26 @@ INSERT INTO `especies` (`id`, `nombre`) VALUES
 (2, 'Perro'),
 (3, 'Hamster'),
 (4, 'Perico');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `estados`
+--
+
+CREATE TABLE `estados` (
+  `id` int(11) NOT NULL,
+  `id_pais` int(11) NOT NULL,
+  `nombre` varchar(55) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `estados`
+--
+
+INSERT INTO `estados` (`id`, `id_pais`, `nombre`) VALUES
+(123, 1, 'Sonora'),
+(234, 2, 'Arizona');
 
 -- --------------------------------------------------------
 
@@ -92,6 +112,25 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `países`
+--
+
+CREATE TABLE `países` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(55) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `países`
+--
+
+INSERT INTO `países` (`id`, `nombre`) VALUES
+(1, 'México'),
+(2, 'Estados Unidos');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -124,6 +163,13 @@ ALTER TABLE `especies`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `estados`
+--
+ALTER TABLE `estados`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pais` (`id_pais`);
+
+--
 -- Indexes for table `mascotas`
 --
 ALTER TABLE `mascotas`
@@ -143,6 +189,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `países`
+--
+ALTER TABLE `países`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -160,6 +212,12 @@ ALTER TABLE `especies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `estados`
+--
+ALTER TABLE `estados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
+
+--
 -- AUTO_INCREMENT for table `mascotas`
 --
 ALTER TABLE `mascotas`
@@ -172,6 +230,12 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `países`
+--
+ALTER TABLE `países`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -180,6 +244,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `estados`
+--
+ALTER TABLE `estados`
+  ADD CONSTRAINT `estados_ibfk_1` FOREIGN KEY (`id_pais`) REFERENCES `países` (`id`);
 
 --
 -- Constraints for table `mascotas`
